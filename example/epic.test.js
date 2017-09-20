@@ -31,11 +31,15 @@ test('test delay', () => {
   );
 });
 
-test('test request', () => {
-  const request = testScheduler => {
+test('advance example', () => {
+  const response = { data: 123 };
+  const requestMock = testScheduler => {
+    // mock your module here
     API.mockImplementation(() =>
-      testScheduler.createColdObservable('--b', { b: { data: 123 } })
+      testScheduler.createColdObservable('--r|', { r: response })
     );
+
+    // return a function to assert your mock module above
     return () =>
       expect(API).toBeCalledWith('http://jsonplaceholder.typicode.com/posts');
   };
@@ -43,10 +47,10 @@ test('test request', () => {
   expectedEpic(
     requestEpic,
     {
-      expect: ['--b', { b: close({ data: 123 }) }],
-      action: ['a', { a: show() }],
+      action: ['--a', { a: show() }],
+      expect: ['----b', { b: close(response) }],
     },
-    request
+    requestMock
   );
 });
 

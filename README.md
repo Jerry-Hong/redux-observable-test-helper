@@ -35,6 +35,7 @@ import {
 import { createExpectedEpic, mockDelay } from 'redux-observable-test-helper';
 
 const expectedEpic = createExpectedEpic((actual, expected) => {
+  // here use Jest, you can use your assertion library
   expect(actual).toEqual(expected);
 });
 

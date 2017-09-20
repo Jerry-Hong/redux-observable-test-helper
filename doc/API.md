@@ -16,7 +16,7 @@ createExpectedEpic() is used to create an **expectedEpic** function
 
 ```javascript
 const expectedEpic = createExpectedEpic((actual, expected) => {
-  // here use Jest demo, you can use your assertion library
+  // here use Jest, you can use your assertion library
   expect(actual).toEqual(expected); 
 });
 ```
