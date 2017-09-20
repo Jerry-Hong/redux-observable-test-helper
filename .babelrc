@@ -1,0 +1,26 @@
+{
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "latest",
+          {
+            "es2015": {
+              "modules": false
+            }
+          }
+        ]
+      ],
+      "plugins": [
+        "external-helpers"
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "es2015"
+        ]
+      ]
+    }
+  }
+}
