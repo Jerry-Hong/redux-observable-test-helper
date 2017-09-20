@@ -54,8 +54,8 @@ test('basic example', () => {
   expectedEpic(
     yourEpic,
     {
-      action: ['a', { a: show() }],
-      expect: ['b', { b: close() }],
+      action: ['-a', { a: show() }],
+      expect: ['-b', { b: close() }],
     }
   );
 });

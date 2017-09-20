@@ -49,3 +49,8 @@ test('test delay', () => {
   );
 });
 ```
+
+## API docs
+
+[read here](https://github.com/Jerry-Hong/redux-observable-test-helper/blob/master/doc/API.md)
+
