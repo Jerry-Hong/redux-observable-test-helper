@@ -27,7 +27,7 @@ const expectedEpic = createExpectedEpic((actual, expected) => {
 
 - `epic: Epic`: an epic you want to test
 - `expect&action: Object`: an object contain two propeerty, **action** and **expect**
-- `mockFuns: function[]`: functions you want to mock
+- `mockFuns: function[]`: function let you mock anything you want
 
 ### example
 
@@ -107,6 +107,8 @@ test('advance example', () => {
 });
 ```
 
+# Helpers
+
 ## mockDelay(marbles)
 
 mock rxjs delay operator, return a mock function for expectedEpic
@@ -130,6 +132,60 @@ test('test delay', () => {
       expect: ['--a', { a: close() }]
     },
     mockDelay('--|')
+  );
+});
+```
+
+## mockThrottleTime(marbles)
+
+mock rxjs throttleTime operator, return a mock function for expectedEpic
+
+### Arguments
+
+- `marbles: string`: marble diagram string
+
+### Returns 
+
+a mock function for expectedEpic
+
+### Example
+
+```javascript
+test('test throttleTime', () => {
+  expectedEpic(
+    throttleEpic,
+    {
+      expect: ['a--a--a', { a: close() }],
+      action: ['aaaaa-a', { a: show() }],
+    },
+    mockThrottleTime('--|')
+  );
+});
+```
+
+## mockDebounceTime(marbles)
+
+mock rxjs debounceTime operator, return a mock function for expectedEpic
+
+### Arguments
+
+- `marbles: string`: marble diagram string
+
+### Returns 
+
+a mock function for expectedEpic
+
+### Example
+
+```javascript
+test('test throttleTime', () => {
+  expectedEpic(
+    debounceEpic,
+    {
+      expect: ['---------a', { a: close() }],
+      action: ['aaa-a-a', { a: show() }],
+    },
+    mockDebounceTime('---|')
   );
 });
 ```
