@@ -7,11 +7,16 @@
     "test": "jest --watch",
     "build": "rollup --config rollup.config.js"
   },
-  "keywords": [
-    "redux",
-    "observable",
-    "test"
-  ],
+  "homepage": "https://github.com/Jerry-Hong/redux-observable-test-helper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jerry-Hong/redux-observable-test-helper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jerry-Hong/redux-observable-test-helper/issues",
+    "email": "s6323859@gmail.com"
+  },
+  "keywords": ["redux", "observable", "test"],
   "author": "s6323859",
   "license": "MIT",
   "devDependencies": {
