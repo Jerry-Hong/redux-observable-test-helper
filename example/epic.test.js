@@ -5,12 +5,14 @@ import {
   requestEpic,
   debounceEpic,
   throttleEpic,
+  timerEpic,
 } from './epic.js';
 import {
   createExpectedEpic,
   mockDelay,
   mockDebounceTime,
   mockThrottleTime,
+  mockTimer,
 } from '../bundle/bundle.js';
 import API from './api.js';
 
@@ -74,4 +76,15 @@ test('test throttleTime', () => {
     },
     mockThrottleTime('--|')
   );
+});
+
+test('test timer', () => {
+  expectedEpic(
+    timerEpic,
+    {
+      action: ['a', { a: show() }],
+      expect: ['-a--a--(a|)', { a: close() }],
+    },
+    mockTimer('-|', '---|')
+  )
 });
