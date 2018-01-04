@@ -24,3 +24,10 @@ export const debounceEpic = action$ =>
 
 export const throttleEpic = action$ =>
   action$.ofType('SHOW').throttleTime(300).map(res => close());
+
+export const timerEpic = action$ =>
+  action$
+    .ofType('SHOW')
+    .mergeMap(() => Observable.timer(100, 300))
+    .map(res => close())
+    .take(3);
