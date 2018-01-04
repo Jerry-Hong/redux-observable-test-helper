@@ -189,3 +189,31 @@ test('test throttleTime', () => {
   );
 });
 ```
+
+## mockTimer(marbles)
+
+mock rxjs timer creator, return a mock function for expectedEpic
+
+### Arguments
+
+- `startMarbles: string`: marble diagram string
+- `intervalMarbles: string`: marble diagram string
+
+### Returns
+
+a mock function for expectedEpic
+
+### Example
+
+```javascript
+test('test timer', () => {
+  expectedEpic(
+    timerEpic,
+    {
+      action: ['a', { a: show() }],
+      expect: ['-a--a--(a|)', { a: close() }],
+    },
+    mockTimer('-|', '---|')
+  );
+});
+```
